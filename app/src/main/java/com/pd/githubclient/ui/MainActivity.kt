@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.pd.githubclient.R
 import com.pd.githubclient.databinding.ActivityMainBinding
+import com.pd.githubclient.domain.RepositoryEntity
 
 /*
 Сквозное приложение этого курса - клиент ГитХаб с отображением списка пользователей, профиля, репозиториев.
@@ -23,7 +24,16 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(binding?.root)
     }
 
-    override fun showResult() {
+
+    override fun showProgress() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showResult(repositories: RepositoryEntity) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showError(throwable: Throwable) {
         TODO("Not yet implemented")
     }
 

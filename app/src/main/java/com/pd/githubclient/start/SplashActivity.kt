@@ -1,13 +1,16 @@
-package com.pd.githubclient.ui
+package com.pd.githubclient.start
 
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.pd.githubclient.databinding.ActivitySplashBinding
+import com.pd.githubclient.ui.MainActivity
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     private val handler: Handler by lazy { // получаем ссылку на главный поток
         Handler(mainLooper)
