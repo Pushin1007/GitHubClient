@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pd.githubclient.AppState
 import com.pd.githubclient.domain.repository.Repository
+import com.pd.githubclient.domain.repository.RepositoryImpl
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel(private val repository: Repository= RepositoryImpl()) : ViewModel() {
     // MutableLiveData в отличии от LiveData позволяет себя изменить и пушить в нее данные
     private val liveData = MutableLiveData<AppState>()
 

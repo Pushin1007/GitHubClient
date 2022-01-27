@@ -17,6 +17,7 @@ class MainFragment : Fragment() {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
+
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
     private var adapter: MainFragmentAdapter? = null
@@ -42,7 +43,7 @@ class MainFragment : Fragment() {
     private fun renderData(appState: AppState) = with(binding) {
         when (appState) {
             is AppState.Success -> {
-                /*
+
                 //здесь будем реагировать на нажатия
                 adapter = MainFragmentAdapter(object : OnItemViewClickListener {
                     override fun onItemViewClick(user: User) {
@@ -53,7 +54,7 @@ class MainFragment : Fragment() {
                 }
                 mainFragmentRecyclerView.adapter = adapter
 
-                 */
+
             }
             is AppState.Loading -> {
             }
