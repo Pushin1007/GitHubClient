@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GitHub Client</string>
+    <string name="userNameLabel">Имя профиля</string>
+    <string name="userName">Dmitry</string>
+    <string name="repositoryLabel">Список репозиториев</string>
+    <string name="userRepository">некоторые репозитории</string>
 </resources>
