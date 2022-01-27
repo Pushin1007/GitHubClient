@@ -11,7 +11,7 @@
         android:theme="@style/Theme.GitHubClient">
 
         <activity
-            android:name=".start.SplashActivity"
+            android:name="com.pd.githubclient.ui.start.SplashActivity"
             android:exported="true"
             android:noHistory="true">
             <intent-filter>
