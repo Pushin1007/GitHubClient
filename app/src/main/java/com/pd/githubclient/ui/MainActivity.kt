@@ -26,7 +26,7 @@ import com.pd.githubclient.ui.main.MainFragment
  */
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding// подключаем  binding правильно
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

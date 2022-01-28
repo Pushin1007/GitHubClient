@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class User(
     val userName: String
+
 ) : Parcelable {
     companion object {
         fun getUsers() = listOf(
@@ -17,3 +18,5 @@ data class User(
 
     }
 }
+
+
