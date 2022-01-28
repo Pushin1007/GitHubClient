@@ -44,23 +44,25 @@ class MainFragment : Fragment() {
 
 
     private fun renderData(appState: AppState) = with(binding) {
-        loadingUserLayout.isVisible = false
-        mainFragmentRecyclerView.isVisible = false
+        //этот метод будет вызываться когда мы будем получать какой-то ивент от наших подписок
+
+
         when (appState) {
-            is AppState.Success -> {
+            is AppState.Success -> { //если загрузка прошла ОК
 
                 //здесь будем реагировать на нажатия
-                adapter = MainFragmentAdapter(object : OnItemViewClickListener {
-                    override fun onItemViewClick(user: User) {
+                adapter = MainFragmentAdapter(object : OnItemViewClickListener { //создаем адаптер
+                    override fun onItemViewClick(user: User) { //передаем ему реакцию от слушателя на один из жлементов списка
                         Toast.makeText(context, "hf,jnftn", Toast.LENGTH_SHORT).show()
                     }
                 }).apply {
                     setUser(appState.userData)
                 }
+                loadingUserLayout.isVisible = false//скрываем виджет загрузки
                 mainFragmentRecyclerView.adapter = adapter
                 mainFragmentRecyclerView.isVisible = true // показываем список
             }
-            is AppState.Loading -> {
+            is AppState.Loading -> { //если идет загрузка то просто  показываем виджет загрузки
                 mainFragmentRecyclerView.isVisible = false
                 loadingUserLayout.isVisible = true
 
@@ -76,11 +78,11 @@ class MainFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding = null // обнуляем ссылку для на фрагмент
 
     }
 
-    interface OnItemViewClickListener {
+    interface OnItemViewClickListener { //создаем интерфейс для того чтобы отлеживание на нажатие можно было пробросить дальше в адаптер
         fun onItemViewClick(user: User)
     }
 
@@ -88,3 +90,53 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 }
+/*
+private fun renderData(appState: AppState) = with(binding) {
+
+    when (appState) {
+        is AppState.Success -> {
+            mainFragmentLoadingLayout.visibility = View.GONE
+            adapter = MainFragmentAdapter(object : OnItemViewClickListener {
+                override fun onItemViewClick(weather: Weather) {
+                    val manager = activity?.supportFragmentManager
+                    manager?.let { manager ->
+                        /*
+                        .let - функция расширения которая возвращает  результат переданной функции, передав в нее объект на котором она вызвана
+                        В частности здесь  функция возвращает объект уже проверенный на nullable.
+                        и в последствии с ним уже можно будет работатть как с не  nullable объектом
+                         */
+                        val bundle = Bundle().apply {
+                            /*
+                            .apply - функция расширения которая позволяет на уже созданном объекте вызвать его методы без ссылки на сам объект
+                            Позволяет соеденить создание объекта с его инициализацией
+                             */
+                            putParcelable(BUNDLE_EXTRA, weather)
+                        }
+                        manager.beginTransaction()
+                            .add(R.id.container, DetailsFragment.newInstance(bundle))
+                            .addToBackStack("")
+                            .commitAllowingStateLoss()
+                    }
+                }
+            }).apply {
+                setWeather(appState.weatherData)
+            }
+            mainFragmentRecyclerView.adapter = adapter
+        }
+        is AppState.Loading -> {
+            mainFragmentLoadingLayout.visibility = View.VISIBLE
+        }
+        is AppState.Error -> {
+            mainFragmentLoadingLayout.visibility = View.GONE
+
+            mainImageButton.showSnackBar(
+                getString(R.string.error),
+                getString(R.string.reload)
+            ) {
+                //функцию на вход в данном случае мы можем вынести за скобки
+                viewModel.getWeatherFromLocalSourceRus()
+            }
+        }
+    }
+}
+*/
