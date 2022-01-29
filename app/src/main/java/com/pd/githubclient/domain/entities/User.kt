@@ -10,9 +10,9 @@ data class User(
 ) : Parcelable {
     companion object {
         fun getUsers() = listOf(
-            User("Dmitry"),
-            User("Dmitry"),
-            User("Andrey"),
+            User("Pushin1007"),
+            User("kshalnov"),
+            User("mentatusn"),
 
             )
 
