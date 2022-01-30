@@ -53,7 +53,17 @@ class MainFragment : Fragment() {
                 //здесь будем реагировать на нажатия
                 adapter = MainFragmentAdapter(object : OnItemViewClickListener { //создаем адаптер
                     override fun onItemViewClick(user: User) { //передаем ему реакцию от слушателя на один из жлементов списка
-                        Toast.makeText(context, "hf,jnftn", Toast.LENGTH_SHORT).show()
+                        val manager = activity?.supportFragmentManager
+//                        manager?.let { manager ->
+//                            val bundle = Bundle().apply {
+//                                putParcelable(BUNDLE_EXTRA, user)
+//
+//                            }
+//                            manager.beginTransaction()
+//                                .add(R.id.container, DetailsFragment.newInstance(bundle))
+//                                .addToBackStack("")
+//                                .commitAllowingStateLoss()
+//                        }
                     }
                 }).apply {
                     setUser(appState.userData)
