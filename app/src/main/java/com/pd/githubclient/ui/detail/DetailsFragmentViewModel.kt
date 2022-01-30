@@ -3,6 +3,7 @@ package com.pd.githubclient.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pd.githubclient.AppState
 import com.pd.githubclient.data.ProfileRepositoryEntity
 import com.pd.githubclient.domain.GitHubLoader
 import com.pd.githubclient.domain.GitHubRepoEntity
@@ -13,11 +14,12 @@ class DetailsFragmentViewModel(
     private val cacheRepository: ProfileRepositoryEntity,
     private val loader: GitHubLoader
 ) : ViewModel() {
-
+    //    val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
     private val _dataLoadedLiveData = MutableLiveData<DataDetailResponse>()
     val dataLoadedLiveDataSearch: LiveData<DataDetailResponse> = _dataLoadedLiveData
 
     fun getData(login: String) {
+        //      liveDataToObserve.value=AppState.Loading
         var repositoriesList = emptyList<GitHubRepoEntity>()
         try {
             loader.loadUserRepositoriesAsync(login) { list ->

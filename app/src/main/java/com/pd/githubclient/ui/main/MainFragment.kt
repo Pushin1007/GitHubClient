@@ -43,7 +43,6 @@ class MainFragment : Fragment() {
             }
             if (searchResponse != null) { //если загрузка прошла ОК
                 if (searchResponse!!.isSuccess) {
-                    Log.d("@@@@", "onViewCreated: suc")
                     parentFragmentManager.beginTransaction().replace(
                         (requireActivity() as MainActivity).binding.container.id,
                         DetailsFragment.getNewInstance(searchResponse!!.login)

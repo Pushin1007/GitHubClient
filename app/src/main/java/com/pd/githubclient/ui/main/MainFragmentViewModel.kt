@@ -38,12 +38,26 @@ class MainFragmentViewModel(
                     loader.loadUserEntityAsync(user.userName) { profile ->
                         if (profile != null) {
                             cacheRepository.loadedEntityCache.add(profile)
-                            _dataLoadedLiveData.postValue(Event(DataSearchResponse(user.userName, true)))
+                            _dataLoadedLiveData.postValue(
+                                Event(
+                                    DataSearchResponse(
+                                        user.userName,
+                                        true
+                                    )
+                                )
+                            )
                         } else {
-                            _dataLoadedLiveData.postValue(Event(DataSearchResponse(user.userName, false)))
+                            _dataLoadedLiveData.postValue(
+                                Event(
+                                    DataSearchResponse(
+                                        user.userName,
+                                        false
+                                    )
+                                )
+                            )
                         }
                     }
-                } catch (e: IOException){
+                } catch (e: IOException) {
 
                 }
             }
