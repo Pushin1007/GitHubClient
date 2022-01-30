@@ -1,17 +1,18 @@
-package com.pd.githubclient.ui
+package com.pd.githubclient.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pd.githubclient.data.LoadedProfileRepository
+import com.pd.githubclient.data.ProfileRepositoryEntity
 import com.pd.githubclient.domain.GitHubLoader
 import com.pd.githubclient.domain.GitHubRepoEntity
+import com.pd.githubclient.ui.DataDetailResponse
 import java.io.IOException
 
-class ProfileDetailsFragmentViewModel(
-    private val cacheRepository: LoadedProfileRepository,
+class DetailsFragmentViewModel(
+    private val cacheRepository: ProfileRepositoryEntity,
     private val loader: GitHubLoader
-): ViewModel() {
+) : ViewModel() {
 
     private val _dataLoadedLiveData = MutableLiveData<DataDetailResponse>()
     val dataLoadedLiveDataSearch: LiveData<DataDetailResponse> = _dataLoadedLiveData
@@ -35,7 +36,7 @@ class ProfileDetailsFragmentViewModel(
                     )
                 }
             }
-        } catch (e: IOException){
+        } catch (e: IOException) {
 
         }
     }

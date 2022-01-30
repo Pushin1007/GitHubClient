@@ -1,7 +1,7 @@
 package com.pd.githubclient.retrofit
 
-import com.pd.githubclient.domainMy.entities.GithubRepoEntity
-import com.pd.githubclient.domainMy.entities.ProfileEntity
+import com.pd.githubclient.domain.GitHubRepoEntity
+import com.pd.githubclient.data.ProfileEntity
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,5 +16,5 @@ interface GithubRepoApi {
     @GET("/users/{userName}/repos")
     fun loadReposByUser(
         @Path("userName") userName: String,
-    ): Call<List<GithubRepoEntity>>
+    ): Call<List<GitHubRepoEntity>>
 }

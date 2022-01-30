@@ -5,6 +5,6 @@ import com.pd.githubclient.databinding.RecyclerViewItemBinding
 
 class ItemViewHolder(binding: RecyclerViewItemBinding): RecyclerView.ViewHolder(binding.root) {
 
-    val nameTextView = binding.userNameTextView
+    val nameTextView = binding.recyclerTextView
 
 }

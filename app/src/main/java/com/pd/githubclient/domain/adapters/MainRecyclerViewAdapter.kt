@@ -1,15 +1,17 @@
-package com.pd.githubclient.domain
+package com.pd.githubclient.domain.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.pd.githubclient.data.GitHubUser
+import com.pd.githubclient.data.User
 import com.pd.githubclient.databinding.RecyclerViewItemBinding
+import com.pd.githubclient.domain.OnItemClickListener
 import com.pd.githubclient.ui.ItemViewHolder
 
-class ProfilesRecyclerViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+class MainRecyclerViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
-    private var itemList = emptyList<GitHubUser>()
+    private var itemList = emptyList<User>()
 
     private lateinit var listener: OnItemClickListener
 
@@ -26,7 +28,7 @@ class ProfilesRecyclerViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
-        holder.nameTextView.text = item.name
+        holder.nameTextView.text = item.userName
         holder.itemView.setOnClickListener { listener.onItemClick(item) }
     }
 
@@ -34,7 +36,8 @@ class ProfilesRecyclerViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         return itemList.size
     }
 
-    fun setItems(list: List<GitHubUser>) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(list: List<User>) {
         itemList = list
         notifyDataSetChanged()
     }
@@ -43,7 +46,7 @@ class ProfilesRecyclerViewAdapter : RecyclerView.Adapter<ItemViewHolder>() {
         this.listener = listener
     }
 
-    private fun getItem(position: Int): GitHubUser {
+    private fun getItem(position: Int): User {
         return itemList[position]
     }
 }

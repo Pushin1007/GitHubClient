@@ -1,12 +1,14 @@
 package com.pd.githubclient.domain
 
-import com.pd.githubclient.data.LoadedProfileEntity
+import com.pd.githubclient.BASE_URL
+import com.pd.githubclient.data.ProfileEntity
+import com.pd.githubclient.domain.retrofit.GitHubApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-private const val BASE_URL = "https://api.github.com/"
+
 class GitHubLoader {
 
     private val retrofit = Retrofit.Builder()
@@ -19,19 +21,20 @@ class GitHubLoader {
 
     fun loadUserEntityAsync(
         userName: String,
-        callback: (gitUserEntity: LoadedProfileEntity?) -> Unit
-    ){
-        api.loadUserByName(userName).enqueue(object: Callback<LoadedProfileEntity> {
+        callback: (gitUserEntity: ProfileEntity?) -> Unit
+    ) {
+        api.loadUserByName(userName).enqueue(object : Callback<ProfileEntity> {
             override fun onResponse(
-                call: Call<LoadedProfileEntity>,
-                response: Response<LoadedProfileEntity>
+                call: Call<ProfileEntity>,
+                response: Response<ProfileEntity>
             ) {
                 callback.invoke(response.body()!!)
             }
 
             override fun onFailure(
-                call: Call<LoadedProfileEntity>,
-                t: Throwable) {
+                call: Call<ProfileEntity>,
+                t: Throwable
+            ) {
                 callback.invoke(null)
             }
 
@@ -41,8 +44,8 @@ class GitHubLoader {
     fun loadUserRepositoriesAsync(
         userName: String,
         callback: (gitHubRepoEntity: List<GitHubRepoEntity>?) -> Unit
-    ){
-        api.loadUsersRepositories(userName).enqueue(object: Callback<List<GitHubRepoEntity>> {
+    ) {
+        api.loadUsersRepositories(userName).enqueue(object : Callback<List<GitHubRepoEntity>> {
             override fun onResponse(
                 call: Call<List<GitHubRepoEntity>>,
                 response: Response<List<GitHubRepoEntity>>
@@ -52,7 +55,8 @@ class GitHubLoader {
 
             override fun onFailure(
                 call: Call<List<GitHubRepoEntity>>,
-                t: Throwable) {
+                t: Throwable
+            ) {
                 callback.invoke(null)
             }
 

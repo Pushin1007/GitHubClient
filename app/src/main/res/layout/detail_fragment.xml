@@ -10,7 +10,7 @@
     android:focusable="true">
 
     <ImageView
-        android:id="@+id/imageUser"
+        android:id="@+id/profile_image_view"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
         android:layout_margin="@dimen/margin_16_dp"
@@ -28,11 +28,11 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageUser"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_view"
         tools:text="@string/userNameLabel" />
 
     <TextView
-        android:id="@+id/userName"
+        android:id="@+id/login_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_5_dp"
@@ -52,18 +52,16 @@
         android:textSize="@dimen/text_size_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+        app:layout_constraintTop_toBottomOf="@+id/login_text_view" />
 
-    <TextView
-        android:id="@+id/userRepository"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/repositories_recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_5_dp"
-        android:textSize="@dimen/text_size_header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repositoryLabel"
-        tools:text="@string/userRepository" />
+
+        android:layout_margin="@dimen/margin_16_dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/repositoryLabel" />
 
 
     <ProgressBar

@@ -1,11 +1,11 @@
 package com.pd.githubclient.data
 
-class LoadedProfileRepository {
+class ProfileRepositoryEntity {
 
-    val loadedEntityCache = mutableListOf<LoadedProfileEntity>()
+    val loadedEntityCache = mutableListOf<ProfileEntity>()
 
 
-    fun getProfileByLogin(login : String): LoadedProfileEntity?{
+    fun getProfileByLogin(login : String): ProfileEntity?{
         loadedEntityCache.forEach { profile->
             if(profile.login==login){
                 return profile
