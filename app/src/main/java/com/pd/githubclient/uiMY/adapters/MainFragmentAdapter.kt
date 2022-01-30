@@ -1,4 +1,4 @@
-package com.pd.githubclient.ui.adapters
+package com.pd.githubclient.uiMY.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pd.githubclient.databinding.FragmentMainRecyclerItemBinding
-import com.pd.githubclient.domain.entities.User
-import com.pd.githubclient.ui.main.MainFragment
+import com.pd.githubclient.domainMy.entities.User
+import com.pd.githubclient.uiMY.main.MainFragment
 
 class MainFragmentAdapter(private val itemClickListener: MainFragment.OnItemViewClickListener) // получаем на вход слушателя который приходит от MainFragment
     : RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {

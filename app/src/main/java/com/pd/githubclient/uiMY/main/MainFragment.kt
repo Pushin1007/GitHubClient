@@ -1,4 +1,4 @@
-package com.pd.githubclient.ui.main
+package com.pd.githubclient.uiMY.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.pd.githubclient.AppState
 import com.pd.githubclient.R
 import com.pd.githubclient.databinding.MainFragmentBinding
-import com.pd.githubclient.domain.entities.User
-import com.pd.githubclient.ui.adapters.MainFragmentAdapter
+import com.pd.githubclient.domainMy.entities.User
+import com.pd.githubclient.uiMY.adapters.MainFragmentAdapter
 
 class MainFragment : Fragment() {
 

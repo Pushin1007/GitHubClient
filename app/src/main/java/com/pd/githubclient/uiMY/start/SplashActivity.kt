@@ -1,4 +1,4 @@
-package com.pd.githubclient.ui.start
+package com.pd.githubclient.uiMY.start
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint

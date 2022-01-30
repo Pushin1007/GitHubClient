@@ -1,7 +1,7 @@
 package com.pd.githubclient.retrofit
 
-import com.pd.githubclient.domain.entities.GithubRepoEntity
-import com.pd.githubclient.domain.entities.ProfileEntity
+import com.pd.githubclient.domainMy.entities.GithubRepoEntity
+import com.pd.githubclient.domainMy.entities.ProfileEntity
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

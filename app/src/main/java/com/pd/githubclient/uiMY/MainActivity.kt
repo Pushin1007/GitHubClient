@@ -1,8 +1,11 @@
-package com.pd.githubclient.ui
+package com.pd.githubclient.uiMY
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.pd.githubclient.R
 import com.pd.githubclient.databinding.ActivityMainBinding
+import com.pd.githubclient.uiMY.main.MainFragment
+
 /*
 ДЗ#1
 Сквозное приложение этого курса - клиент ГитХаб с отображением списка пользователей, профиля, репозиториев.
@@ -23,16 +26,14 @@ import com.pd.githubclient.databinding.ActivityMainBinding
  */
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding// подключаем  binding правильно
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-        supportFragmentManager.beginTransaction().replace(binding.container.id, HomeFragment()).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, MainFragment.newInstance()).commit()
     }
 
 }

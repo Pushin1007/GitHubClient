@@ -1,4 +1,4 @@
-package com.pd.githubclient.domain.entities
+package com.pd.githubclient.domainMy.entities
 
 import com.google.gson.annotations.SerializedName
 

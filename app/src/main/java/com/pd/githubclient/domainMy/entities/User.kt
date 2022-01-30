@@ -1,4 +1,4 @@
-package com.pd.githubclient.domain.entities
+package com.pd.githubclient.domainMy.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

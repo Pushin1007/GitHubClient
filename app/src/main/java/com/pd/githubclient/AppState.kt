@@ -1,6 +1,6 @@
 package com.pd.githubclient
 
-import com.pd.githubclient.domain.entities.User
+import com.pd.githubclient.domainMy.entities.User
 
 sealed class AppState {
     data class Success(val userData: List<User>) : AppState()

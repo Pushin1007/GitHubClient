@@ -1,11 +1,11 @@
-package com.pd.githubclient.ui.main
+package com.pd.githubclient.uiMY.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pd.githubclient.AppState
-import com.pd.githubclient.domain.repository.Repository
-import com.pd.githubclient.domain.repository.RepositoryImpl
+import com.pd.githubclient.domainMy.repository.Repository
+import com.pd.githubclient.domainMy.repository.RepositoryImpl
 
 class MainViewModel(
     private val repository: Repository= RepositoryImpl()
