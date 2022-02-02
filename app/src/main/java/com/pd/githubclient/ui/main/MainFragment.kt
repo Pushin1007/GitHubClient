@@ -1,14 +1,13 @@
 package com.pd.githubclient.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.pd.githubclient.R
 import com.pd.githubclient.databinding.MainFragmentBinding
-import com.pd.githubclient.domain.DataSearchResponse
 import com.pd.githubclient.domain.adapters.MainRecyclerViewAdapter
 import com.pd.githubclient.ui.MainActivity
 import com.pd.githubclient.ui.detail.DetailsFragment
@@ -37,22 +36,21 @@ class MainFragment : Fragment() {
         }
 
         viewModel.dataLoadedLiveDataSearch.observe(viewLifecycleOwner) { responseEvent ->
-            var searchResponse: DataSearchResponse? = null
-            responseEvent.getContentIfNotHandled()?.let { responseEvent ->
-                searchResponse = responseEvent
+
+            responseEvent.getContentIfNotHandled()?.let { responseEvent -> //если загрузка прошла ОК
+                parentFragmentManager.beginTransaction().replace(
+                    (requireActivity() as MainActivity).binding.container.id,
+                    DetailsFragment.getNewInstance(responseEvent)
+                ).addToBackStack(null).commit()
             }
-            if (searchResponse != null) { //если загрузка прошла ОК
-                if (searchResponse!!.isSuccess) {
-                    parentFragmentManager.beginTransaction().replace(
-                        (requireActivity() as MainActivity).binding.container.id,
-                        DetailsFragment.getNewInstance(searchResponse!!.login)
-                    ).addToBackStack(null).commit()
-                } else if (!searchResponse!!.isSuccess) {
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
-                }
+            super.onViewCreated(view, savedInstanceState)
+        }
+        viewModel.onErrorLiveData.observe(viewLifecycleOwner)// при наступлении ошибки
+        { errorEvent ->
+            errorEvent.getContentIfNotHandled()?.let {
+                Toast.makeText(requireContext(), R.string.errorLoadUser, Toast.LENGTH_SHORT).show()
             }
         }
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroyView() {
@@ -65,4 +63,5 @@ class MainFragment : Fragment() {
     companion object {
         fun newInstance() = MainFragment()
     }
+
 }
