@@ -35,7 +35,7 @@ class DetailsFragmentViewModel(
                 onError = {
                     _onErrorLiveData.postValue(Event(Unit))
                 },
-                onNext = { list ->
+                onSuccess  = { list ->// метода onNext в Single нет, данные получаются когда полностью закончится процесс
                     _dataLoadedLiveData.postValue(
                         DataDetailResponse(
                             list,

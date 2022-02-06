@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 
 class GitHubLoader {
 
@@ -24,13 +25,13 @@ class GitHubLoader {
     // реализуем интерфейс ретрофита - создаем потоки данных
     fun loadUserEntityAsync(
         userName: String
-    ): Observable<ProfileEntity> {// меняем коллбек на Observable-источник данных
+    ): Single<ProfileEntity> {// меняем коллбек на Observable-источник данных
         return api.loadUserByName(userName)
     }
 
     fun loadUserRepositoriesAsync(
         userName: String
-    ): Observable<List<GitHubRepoEntity>> {
+    ): Single<List<GitHubRepoEntity>> {
         return api.loadUsersRepositories(userName)
     }
 }

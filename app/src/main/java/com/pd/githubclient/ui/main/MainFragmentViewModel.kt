@@ -47,7 +47,7 @@ class MainFragmentViewModel(
                         onError = {
                             _onErrorLiveData.postValue(Event(Unit))
                         },
-                        onNext = { profile ->
+                        onSuccess  = { profile -> // после того как данные получены, грузим их во вьюхи
                             cacheRepository.loadedEntityCache.add(profile)
                             _dataLoadedLiveData.postValue(Event(profile.login))
                         })
