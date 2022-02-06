@@ -19,16 +19,16 @@ class DetailsFragmentViewModel(
     private val cacheRepository: ProfileRepositoryEntity,
     private val loader: GitHubLoader
 ) : ViewModel() {
-    //    val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
+
     private val _dataLoadedLiveData = MutableLiveData<DataDetailResponse>()
     val dataLoadedLiveDataSearch: LiveData<DataDetailResponse> = _dataLoadedLiveData
 
     private val _onErrorLiveData = MutableLiveData<Event<Unit>>()
-    val onErrorLiveData: LiveData<Event<Unit>> = _onErrorLiveData
 
 
     fun getData(login: String) {
         loader.loadUserRepositoriesAsync(login)
+            .retry(3)//в случае ошибки перезапустит поток
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

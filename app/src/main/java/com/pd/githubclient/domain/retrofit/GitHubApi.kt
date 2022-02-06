@@ -13,7 +13,7 @@ interface GitHubApi {
     @GET("/users/{userName}")
     fun loadUserByName(
         @Path("userName") userName: String,
-    ): Single<ProfileEntity> // создаем потоки данных
+    ): Observable<ProfileEntity> // создаем потоки данных. Оставлю сдесь  Observable для разнообразия
 
     @GET("/users/{userName}/repos")
     fun loadUsersRepositories(
