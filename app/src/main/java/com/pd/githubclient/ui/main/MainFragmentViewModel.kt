@@ -46,7 +46,7 @@ class MainFragmentViewModel(
                     .observeOn(AndroidSchedulers.mainThread())// переключаемся  на главный поток и получаем данные в нем
                     .subscribeBy(
                         onError = {
-                            _onErrorLiveData.postValue(Event(Unit))
+                            _onErrorLiveData.postValue(Event(Unit)) // ничего не передаем. заглушка
                         },
                         onNext  = { profile -> // после того как данные получены, грузим их во вьюхи
                             cacheRepository.loadedEntityCache.add(profile)

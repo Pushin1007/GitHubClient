@@ -33,7 +33,7 @@ class DetailsFragmentViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onError = {
-                    _onErrorLiveData.postValue(Event(Unit))
+                    _onErrorLiveData.postValue(Event(Unit)) // ничего не передаем. заглушка
                 },
                 onSuccess  = { list ->// метода onNext в Single нет, данные получаются когда полностью закончится процесс
                     _dataLoadedLiveData.postValue(
