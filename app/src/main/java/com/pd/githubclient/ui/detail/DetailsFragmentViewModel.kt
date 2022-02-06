@@ -12,6 +12,7 @@ import com.pd.githubclient.ui.DataDetailResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import java.io.IOException
 
 class DetailsFragmentViewModel(

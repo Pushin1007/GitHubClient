@@ -50,12 +50,9 @@ class DetailsFragment : Fragment() {
         viewModel.getData(login!!)
 
         viewModel.dataLoadedLiveDataSearch.observe(viewLifecycleOwner) { response ->
-//            if (response.isSuccess) {
                 Glide.with(this).load(response.profile!!.avatarUrl).into(binding.profileImageView)
                 adapter.setItems(response.repositories)
-//            } else {
-//                Toast.makeText(requireContext(), R.string.errorLoadUser, Toast.LENGTH_SHORT).show()
-//            }
+
 
         }
 
