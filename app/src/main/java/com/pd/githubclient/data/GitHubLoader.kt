@@ -31,6 +31,7 @@ class GitHubLoader {
             .refCount()// Начнет работу как только появится первый подписчик
     }
 
+
     fun loadUserRepositoriesAsync(
         userName: String
     ): Single<List<GitHubRepoEntity>> {
