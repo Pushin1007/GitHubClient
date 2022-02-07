@@ -15,7 +15,7 @@ class GitHubLoader {
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())//TODO
+        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())//адаптер который преобразовывает данные в Observable
         .build()
 
     private var api: GitHubApi = retrofit.create(GitHubApi::class.java)
@@ -24,13 +24,18 @@ class GitHubLoader {
     fun loadUserEntityAsync(
         userName: String
     ): Observable<ProfileEntity> {// меняем коллбек на Observable-источник данных
-        //делаем из холодного горячий источникданных. Начнет работу как только появится первый подписчик
-        return api.loadUserByName(userName).subscribeOn(Schedulers.computation()).replay().refCount()
+        //делаем из холодного горячий источникданных.
+        return api.loadUserByName(userName)
+            .subscribeOn(Schedulers.computation())// запускаем в пуле потоков не computation
+            .replay(1) // возвращает  последние данные всего 1шт , аналог LiveData
+            .refCount()// Начнет работу как только появится первый подписчик
     }
 
     fun loadUserRepositoriesAsync(
         userName: String
     ): Single<List<GitHubRepoEntity>> {
-        return api.loadUsersRepositories(userName).subscribeOn(Schedulers.computation()).cache()//храним все элементы
+        return api.loadUsersRepositories(userName)
+            .subscribeOn(Schedulers.computation())
+            .cache()//кешируем все данные и воспроизводим их для каждой подписки
     }
 }
