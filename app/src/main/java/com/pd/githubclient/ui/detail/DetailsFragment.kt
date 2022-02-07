@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.pd.githubclient.R
 import com.pd.githubclient.databinding.DetailFragmentBinding
+import com.pd.githubclient.domain.DataSearchResponse
 import com.pd.githubclient.domain.adapters.DetailsRecyclerViewAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.NullPointerException
@@ -49,12 +50,12 @@ class DetailsFragment : Fragment() {
         viewModel.getData(login!!)
 
         viewModel.dataLoadedLiveDataSearch.observe(viewLifecycleOwner) { response ->
-            if (response.isSuccess) {
-                Glide.with(this).load(response.profile.avatarUrl).into(binding.profileImageView)
+//            if (response.isSuccess) {
+                Glide.with(this).load(response.profile!!.avatarUrl).into(binding.profileImageView)
                 adapter.setItems(response.repositories)
-            } else {
-                Toast.makeText(requireContext(), R.string.errorLoadUser, Toast.LENGTH_SHORT).show()
-            }
+//            } else {
+//                Toast.makeText(requireContext(), R.string.errorLoadUser, Toast.LENGTH_SHORT).show()
+//            }
 
         }
 

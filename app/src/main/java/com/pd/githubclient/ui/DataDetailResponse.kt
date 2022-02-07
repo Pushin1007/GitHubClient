@@ -5,6 +5,5 @@ import com.pd.githubclient.domain.GitHubRepoEntity
 
 data class DataDetailResponse(
     val repositories: List<GitHubRepoEntity>,
-    val profile: ProfileEntity,
-    val isSuccess: Boolean
+    val profile: ProfileEntity?
 )

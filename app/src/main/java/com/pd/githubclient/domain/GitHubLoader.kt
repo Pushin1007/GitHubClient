@@ -8,59 +8,29 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
+import io.reactivex.rxjava3.core.Observable
 
 class GitHubLoader {
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())//TODO
         .build()
 
     private var api: GitHubApi = retrofit.create(GitHubApi::class.java)
 
-
+    // реализуем интерфейс ретрофита - создаем потоки данных
     fun loadUserEntityAsync(
-        userName: String,
-        callback: (gitUserEntity: ProfileEntity?) -> Unit
-    ) {
-        api.loadUserByName(userName).enqueue(object : Callback<ProfileEntity> {
-            override fun onResponse(
-                call: Call<ProfileEntity>,
-                response: Response<ProfileEntity>
-            ) {
-                callback.invoke(response.body()!!)
-            }
-
-            override fun onFailure(
-                call: Call<ProfileEntity>,
-                t: Throwable
-            ) {
-                callback.invoke(null)
-            }
-
-        })
+        userName: String
+    ): Observable<ProfileEntity> {// меняем коллбек на Observable-источник данных
+        return api.loadUserByName(userName)
     }
 
     fun loadUserRepositoriesAsync(
-        userName: String,
-        callback: (gitHubRepoEntity: List<GitHubRepoEntity>?) -> Unit
-    ) {
-        api.loadUsersRepositories(userName).enqueue(object : Callback<List<GitHubRepoEntity>> {
-            override fun onResponse(
-                call: Call<List<GitHubRepoEntity>>,
-                response: Response<List<GitHubRepoEntity>>
-            ) {
-                callback.invoke(response.body())
-            }
-
-            override fun onFailure(
-                call: Call<List<GitHubRepoEntity>>,
-                t: Throwable
-            ) {
-                callback.invoke(null)
-            }
-
-        }
-        )
+        userName: String
+    ): Observable<List<GitHubRepoEntity>> {
+        return api.loadUsersRepositories(userName)
     }
 }
