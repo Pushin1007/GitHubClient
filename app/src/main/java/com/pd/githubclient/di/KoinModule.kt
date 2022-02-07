@@ -1,10 +1,10 @@
 package com.pd.githubclient.di
 
 
-import com.pd.githubclient.data.ProfileRepositoryEntity
-import com.pd.githubclient.domain.GitHubLoader
-import com.pd.githubclient.domain.repository.Repository
-import com.pd.githubclient.domain.repository.RepositoryImpl
+import com.pd.githubclient.domain.ProfileRepositoryEntity
+import com.pd.githubclient.data.GitHubLoader
+import com.pd.githubclient.data.repository.Repository
+import com.pd.githubclient.data.repository.RepositoryImpl
 import com.pd.githubclient.ui.main.MainFragmentViewModel
 import com.pd.githubclient.ui.detail.DetailsFragmentViewModel
 

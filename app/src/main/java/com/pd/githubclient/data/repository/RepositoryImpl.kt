@@ -1,6 +1,6 @@
-package com.pd.githubclient.domain.repository
+package com.pd.githubclient.data.repository
 
-import com.pd.githubclient.data.User
+import com.pd.githubclient.domain.User
 
 class RepositoryImpl : Repository {
     override fun getUserFromLocalStorage(): List<User> {

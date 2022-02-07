@@ -1,4 +1,4 @@
-package com.pd.githubclient.domain
+package com.pd.githubclient.data
 
 data class DataSearchResponse(
     val login: String?,

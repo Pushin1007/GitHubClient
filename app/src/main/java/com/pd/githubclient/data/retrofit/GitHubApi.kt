@@ -1,10 +1,9 @@
-package com.pd.githubclient.domain.retrofit
+package com.pd.githubclient.data.retrofit
 
-import com.pd.githubclient.data.ProfileEntity
-import com.pd.githubclient.domain.GitHubRepoEntity
+import com.pd.githubclient.domain.ProfileEntity
+import com.pd.githubclient.data.GitHubRepoEntity
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 

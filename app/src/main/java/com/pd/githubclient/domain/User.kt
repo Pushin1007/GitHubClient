@@ -1,4 +1,4 @@
-package com.pd.githubclient.data
+package com.pd.githubclient.domain
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

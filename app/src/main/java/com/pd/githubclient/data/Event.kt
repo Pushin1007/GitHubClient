@@ -1,4 +1,4 @@
-package com.pd.githubclient.domain
+package com.pd.githubclient.data
 
 open class Event<out T>(private val content: T) {
 

@@ -3,16 +3,15 @@ package com.pd.githubclient.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pd.githubclient.data.User
+import com.pd.githubclient.domain.User
 
-import com.pd.githubclient.data.ProfileRepositoryEntity
-import com.pd.githubclient.domain.*
-import com.pd.githubclient.domain.adapters.MainRecyclerViewAdapter
-import com.pd.githubclient.domain.repository.Repository
+import com.pd.githubclient.domain.ProfileRepositoryEntity
+import com.pd.githubclient.data.*
+import com.pd.githubclient.data.adapters.MainRecyclerViewAdapter
+import com.pd.githubclient.data.repository.Repository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.io.IOException
 
 class MainFragmentViewModel(
     private val loader: GitHubLoader,

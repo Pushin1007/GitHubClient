@@ -2,17 +2,13 @@ package com.pd.githubclient.ui.detail
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.pd.githubclient.R
 import com.pd.githubclient.databinding.DetailFragmentBinding
-import com.pd.githubclient.domain.DataSearchResponse
-import com.pd.githubclient.domain.adapters.DetailsRecyclerViewAdapter
+import com.pd.githubclient.data.adapters.DetailsRecyclerViewAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.NullPointerException
 

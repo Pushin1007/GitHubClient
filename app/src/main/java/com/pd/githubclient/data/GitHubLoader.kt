@@ -1,11 +1,8 @@
-package com.pd.githubclient.domain
+package com.pd.githubclient.data
 
 import com.pd.githubclient.BASE_URL
-import com.pd.githubclient.data.ProfileEntity
-import com.pd.githubclient.domain.retrofit.GitHubApi
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.pd.githubclient.domain.ProfileEntity
+import com.pd.githubclient.data.retrofit.GitHubApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory

@@ -1,6 +1,6 @@
 package com.pd.githubclient
 
-import com.pd.githubclient.data.User
+import com.pd.githubclient.domain.User
 
 sealed class AppState {
     /*

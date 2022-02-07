@@ -1,4 +1,4 @@
-package com.pd.githubclient.data
+package com.pd.githubclient.domain
 
 class ProfileRepositoryEntity {
 

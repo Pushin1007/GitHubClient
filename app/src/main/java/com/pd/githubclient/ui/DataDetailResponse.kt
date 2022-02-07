@@ -1,7 +1,7 @@
 package com.pd.githubclient.ui
 
-import com.pd.githubclient.data.ProfileEntity
-import com.pd.githubclient.domain.GitHubRepoEntity
+import com.pd.githubclient.domain.ProfileEntity
+import com.pd.githubclient.data.GitHubRepoEntity
 
 data class DataDetailResponse(
     val repositories: List<GitHubRepoEntity>,

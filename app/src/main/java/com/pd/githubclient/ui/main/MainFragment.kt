@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.pd.githubclient.R
 import com.pd.githubclient.databinding.MainFragmentBinding
-import com.pd.githubclient.domain.adapters.MainRecyclerViewAdapter
+import com.pd.githubclient.data.adapters.MainRecyclerViewAdapter
 import com.pd.githubclient.ui.MainActivity
 import com.pd.githubclient.ui.detail.DetailsFragment
 
