@@ -9,7 +9,9 @@ data class User(val userName: String) : Parcelable {
         fun getUsers() = listOf(
             User("Pushin1007"),
             User("kshalnov"),
-            User("mentatusn")
+            User("mentatusn"),
+            User("ArtNikita")
+
         )
     }
 }

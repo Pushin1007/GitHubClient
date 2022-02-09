@@ -40,14 +40,15 @@ class MainFragmentViewModel(
         return object : OnItemClickListener {
             override fun onItemClick(user: User) {
 
-                loader.loadUserEntityAsync(user.userName)// ловим данные
-                    .subscribeOn(Schedulers.io())// создаем "распсание"
-                    .observeOn(AndroidSchedulers.mainThread())// переключаемся на главный поток
+                loader.loadUserEntityAsync(user.userName) // ловим данные
+                    .retry(3)//в случае ошибки перезапустит поток
+                    .subscribeOn(Schedulers.io())// наши запросы делаем в потоке IO т.к. ходим в сеть
+                    .observeOn(AndroidSchedulers.mainThread())// переключаемся  на главный поток и получаем данные в нем
                     .subscribeBy(
                         onError = {
-                            _onErrorLiveData.postValue(Event(Unit))
+                            _onErrorLiveData.postValue(Event(Unit)) // ничего не передаем. заглушка
                         },
-                        onNext = { profile ->
+                        onNext  = { profile -> // после того как данные получены, грузим их во вьюхи
                             cacheRepository.loadedEntityCache.add(profile)
                             _dataLoadedLiveData.postValue(Event(profile.login))
                         })
