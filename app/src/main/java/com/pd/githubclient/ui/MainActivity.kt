@@ -2,6 +2,7 @@ package com.pd.githubclient.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.pd.githubclient.app
 import com.pd.githubclient.databinding.ActivityMainBinding
 import com.pd.githubclient.ui.main.MainFragment
 
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+app.di
 
 
         supportFragmentManager.beginTransaction().replace(binding.container.id, MainFragment())
