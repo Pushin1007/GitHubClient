@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.pd.githubclient.data.repository.Repository
 import com.pd.githubclient.data.repository.RepositoryImpl
-import com.pd.githubclient.di.appModule
+import com.pd.githubclient.diKoin.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

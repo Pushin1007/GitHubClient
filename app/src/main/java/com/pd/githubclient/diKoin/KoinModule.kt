@@ -1,15 +1,12 @@
-package com.pd.githubclient.di
+package com.pd.githubclient.diKoin
 
 
 import com.pd.githubclient.app
 import com.pd.githubclient.domain.ProfileRepositoryEntity
 import com.pd.githubclient.data.GitHubLoader
-import com.pd.githubclient.data.repository.Repository
-import com.pd.githubclient.data.repository.RepositoryImpl
 import com.pd.githubclient.ui.main.MainFragmentViewModel
 import com.pd.githubclient.ui.detail.DetailsFragmentViewModel
 import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
 
 
 import org.koin.androidx.viewmodel.dsl.viewModel
