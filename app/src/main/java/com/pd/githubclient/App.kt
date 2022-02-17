@@ -13,9 +13,7 @@ import org.koin.core.logger.Level
 class App : Application() {
 
     val di by lazy {
-        DaggerAppComponent.builder()
-            .appModule(AppModule())
-            .build()
+        DaggerAppComponent.builder().build()
     }
 }
 
