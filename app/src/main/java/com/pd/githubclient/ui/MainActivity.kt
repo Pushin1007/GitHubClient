@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-app.di
+//app.di//Dagger2
 
 
         supportFragmentManager.beginTransaction().replace(binding.container.id, MainFragment())
