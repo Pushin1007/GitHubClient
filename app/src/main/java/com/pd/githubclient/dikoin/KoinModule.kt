@@ -7,18 +7,29 @@ import com.pd.githubclient.domain.ProfileRepositoryEntity
 import com.pd.githubclient.ui.detail.DetailsFragmentViewModel
 import com.pd.githubclient.ui.main.MainFragmentViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 import org.koin.dsl.module
+
+// Аннотация- добавляем модуль который занимается сканированием своих аннотаций по классам
+@Module
+@ComponentScan("com.pd.githubclient")
+class AnnotationModule
 
 //создаем синглтоны один на все приложение в одном модуле
 val appModule = module {
-
+/*
+//выключем отсюда и добавляем через  аннотацию
     single<Repository> {
         RepositoryImpl()
     }
+ */
 
     single<GitHubLoader> {
         GitHubLoader()
     }
+
+
 
     single<ProfileRepositoryEntity> {
         ProfileRepositoryEntity()
