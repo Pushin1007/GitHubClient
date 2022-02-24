@@ -9,8 +9,9 @@ import com.pd.githubclient.ui.main.MainFragmentViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+//создаем синглтоны один на все приложение в одном модуле
 val appModule = module {
-    //создаем синглтоны один на все приложение
+
     single<Repository> {
         RepositoryImpl()
     }
@@ -23,7 +24,11 @@ val appModule = module {
         ProfileRepositoryEntity()
     }
 
-//View models
+}
+
+//View models в другом модуле
+val viewModelModule = module {
+
     // метод  (get() заставит обратиться коин и найти у своих модулей тип который нужно на вход во ViewModel
 
     viewModel<MainFragmentViewModel> {

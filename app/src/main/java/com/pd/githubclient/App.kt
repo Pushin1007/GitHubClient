@@ -6,6 +6,7 @@ import com.pd.githubclient.data.repository.Repository
 import com.pd.githubclient.data.repository.RepositoryImpl
 import com.pd.githubclient.didag.AppModule
 import com.pd.githubclient.dikoin.appModule
+import com.pd.githubclient.dikoin.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,12 +19,13 @@ class App : Application() {
             DaggerAppComponent.builder().build()
         }
      */
-//Koin
+
+    //Koin
     override fun onCreate() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@App)
-            modules(listOf(appModule))
+            modules(appModule, viewModelModule)
         }
         super.onCreate()
     }
