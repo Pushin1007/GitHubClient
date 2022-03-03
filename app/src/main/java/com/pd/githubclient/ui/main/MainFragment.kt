@@ -1,5 +1,6 @@
 package com.pd.githubclient.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,21 +12,34 @@ import com.pd.githubclient.databinding.MainFragmentBinding
 import com.pd.githubclient.data.adapters.MainRecyclerViewAdapter
 import com.pd.githubclient.ui.MainActivity
 import com.pd.githubclient.ui.detail.DetailsFragment
+import com.pd.githubclient.app
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
+
 
 class MainFragment : Fragment() {
 
+
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModel<MainFragmentViewModel>()
+
+    @Inject
+    lateinit var viewModel: MainFragmentViewModel
+
     private val adapter = MainRecyclerViewAdapter()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        context.app.di.injectMain(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(inflater)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

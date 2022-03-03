@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.pd.githubclient.app
 import com.pd.githubclient.databinding.DetailFragmentBinding
 import com.pd.githubclient.data.adapters.DetailsRecyclerViewAdapter
+import com.pd.githubclient.ui.main.MainFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.NullPointerException
+import javax.inject.Inject
 
 private const val argsKey = "LOGIN"
 
@@ -19,7 +22,9 @@ class DetailsFragment : Fragment() {
     private var login: String? = null
     private var _binding: DetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModel<DetailsFragmentViewModel>()
+    @Inject
+    lateinit var viewModel: DetailsFragmentViewModel
+
     private val adapter = DetailsRecyclerViewAdapter()
 
     override fun onCreateView(
@@ -36,6 +41,7 @@ class DetailsFragment : Fragment() {
             throw NullPointerException("Login should be provided")
         }
         super.onAttach(context)
+        context.app.di.injectDetails(this)
     }
 
 
