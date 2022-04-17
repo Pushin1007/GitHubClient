@@ -24,15 +24,24 @@ class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
+    /*
+
     @Inject
-    lateinit var viewModel: MainFragmentViewModel
+        lateinit var viewModel: MainFragmentViewModel    //Dagger2
+     */
+    //Koin
+    private val viewModel by viewModel<MainFragmentViewModel>()
 
     private val adapter = MainRecyclerViewAdapter()
-
-    override fun onAttach(context: Context) {
+/*
+//Dagger2
+ override fun onAttach(context: Context) {
         super.onAttach(context)
+
         context.app.di.injectMain(this)
     }
+ */
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

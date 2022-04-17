@@ -22,8 +22,15 @@ class DetailsFragment : Fragment() {
     private var login: String? = null
     private var _binding: DetailFragmentBinding? = null
     private val binding get() = _binding!!
+
+    //Koin
+    private val viewModel by viewModel<DetailsFragmentViewModel>()
+    /*
+
     @Inject
-    lateinit var viewModel: DetailsFragmentViewModel
+     lateinit var viewModel: DetailsFragmentViewModel     //Dagger2
+     */
+
 
     private val adapter = DetailsRecyclerViewAdapter()
 
@@ -41,7 +48,8 @@ class DetailsFragment : Fragment() {
             throw NullPointerException("Login should be provided")
         }
         super.onAttach(context)
-        context.app.di.injectDetails(this)
+
+        // context.app.di.injectDetails(this)        //Dagger2
     }
 
 
@@ -52,8 +60,8 @@ class DetailsFragment : Fragment() {
         viewModel.getData(login!!)
 
         viewModel.dataLoadedLiveDataSearch.observe(viewLifecycleOwner) { response ->
-                Glide.with(this).load(response.profile!!.avatarUrl).into(binding.profileImageView)
-                adapter.setItems(response.repositories)
+            Glide.with(this).load(response.profile!!.avatarUrl).into(binding.profileImageView)
+            adapter.setItems(response.repositories)
 
 
         }
